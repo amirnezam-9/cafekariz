@@ -20,7 +20,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background: #0A0E1A;
+    background: #050a14;
     overflow: hidden;
   }
   .bg-image {
@@ -29,13 +29,32 @@
     background-image: url('/photo_2026-05-17_22-01-51.jpg');
     background-size: cover;
     background-position: center;
-    opacity: 0.3;
-    filter: saturate(0.6) hue-rotate(200deg);
+    opacity: 0.55;
+    filter: saturate(0.85);
   }
   .overlay {
     position: absolute;
     inset: 0;
-    background: linear-gradient(to top, rgba(10,14,26,0.92) 0%, rgba(10,14,26,0.4) 50%, rgba(10,14,26,0.6) 100%);
+    background: linear-gradient(to top, rgba(5,10,20,0.97) 0%, rgba(5,10,20,0.5) 55%, rgba(5,10,20,0.75) 100%);
+  }
+  /* نئون آبی گوشه بالا */
+  .neon-glow-top {
+    position: absolute;
+    top: -80px; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse at center, rgba(30,120,255,0.18) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+  }
+  /* نئون صورتی گوشه */
+  .neon-glow-pink {
+    position: absolute;
+    bottom: -60px; right: -60px;
+    width: 400px; height: 400px;
+    background: radial-gradient(ellipse at center, rgba(232,0,90,0.12) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 1;
   }
   .content {
     position: relative;
@@ -45,41 +64,52 @@
     padding: 0 24px;
   }
   .logo-icon {
-    width: 64px;
-    height: 64px;
-    margin: 0 auto 20px;
-    background: rgba(232,0,90,0.12);
-    border: 1.5px solid rgba(232,0,90,0.4);
+    width: 68px;
+    height: 68px;
+    margin: 0 auto 22px;
+    background: rgba(30,120,255,0.08);
+    border: 1.5px solid rgba(80,160,255,0.5);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(8px);
+    box-shadow: 0 0 18px rgba(30,120,255,0.3), inset 0 0 12px rgba(30,120,255,0.08);
   }
   .logo-icon svg {
-    width: 32px;
-    height: 32px;
+    width: 32px; height: 32px;
     fill: none;
-    stroke: #E8005A;
+    stroke: #4AA8FF;
     stroke-width: 1.5;
     stroke-linecap: round;
     stroke-linejoin: round;
+    filter: drop-shadow(0 0 6px rgba(74,168,255,0.8));
   }
   .cafe-name {
-    font-size: 52px;
+    font-size: 54px;
     font-weight: 700;
     letter-spacing: -1px;
     color: #fff;
     line-height: 1.1;
     margin-bottom: 10px;
+    text-shadow: 0 0 40px rgba(30,120,255,0.4);
   }
-  .cafe-name span { color: #E8005A; }
+  .cafe-name span {
+    color: #4AA8FF;
+    text-shadow: 0 0 20px rgba(74,168,255,0.9), 0 0 40px rgba(74,168,255,0.5);
+  }
   .tagline {
     font-size: 15px;
-    color: rgba(168,206,237,0.7);
-    letter-spacing: 2px;
+    color: rgba(168,206,237,0.65);
+    letter-spacing: 3px;
     font-weight: 300;
-    margin-bottom: 56px;
+    margin-bottom: 52px;
+  }
+  .divider {
+    width: 48px; height: 1.5px;
+    background: rgba(74,168,255,0.6);
+    margin: 0 auto 44px;
+    box-shadow: 0 0 8px rgba(74,168,255,0.8);
   }
   .buttons {
     display: flex;
@@ -103,44 +133,50 @@
     font-family: inherit;
     cursor: pointer;
     text-decoration: none;
-    transition: transform 0.18s ease, opacity 0.18s ease, box-shadow 0.18s ease;
-    border: none;
+    transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
     letter-spacing: 0.3px;
   }
   .btn:hover { transform: translateY(-2px); }
   .btn:active { transform: scale(0.97); }
- 
+
   .btn-primary {
-    background: #E8005A;
-    color: #fff;
+    background: rgba(30,100,255,0.2);
+    color: #7DC8FF;
+    border: 1.5px solid rgba(74,168,255,0.55);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 16px rgba(30,120,255,0.2), inset 0 0 20px rgba(30,120,255,0.05);
   }
   .btn-primary:hover {
-    box-shadow: 0 8px 32px rgba(232,0,90,0.45);
-    opacity: 0.92;
+    background: rgba(30,100,255,0.32);
+    box-shadow: 0 0 28px rgba(74,168,255,0.45), inset 0 0 20px rgba(74,168,255,0.08);
+    border-color: rgba(74,168,255,0.85);
+    color: #B8DEFF;
   }
- 
+
   .btn-insta {
-    background: rgba(74,126,199,0.15);
+    background: rgba(10,20,50,0.5);
     color: #A8CEED;
-    border: 1px solid rgba(74,126,199,0.35);
+    border: 1px solid rgba(74,168,255,0.25);
     backdrop-filter: blur(10px);
   }
   .btn-insta:hover {
-    background: rgba(74,126,199,0.25);
-    box-shadow: 0 8px 32px rgba(74,126,199,0.2);
+    background: rgba(20,50,100,0.45);
+    box-shadow: 0 0 20px rgba(74,168,255,0.2);
+    border-color: rgba(74,168,255,0.5);
   }
- 
+
   .btn-contact {
-    background: rgba(45,58,82,0.5);
-    color: #E0DAD5;
-    border: 1px solid rgba(168,206,237,0.2);
+    background: rgba(232,0,90,0.08);
+    color: #FF70A6;
+    border: 1px solid rgba(232,0,90,0.3);
     backdrop-filter: blur(10px);
   }
   .btn-contact:hover {
-    background: rgba(45,58,82,0.7);
-    box-shadow: 0 8px 32px rgba(45,58,82,0.4);
+    background: rgba(232,0,90,0.18);
+    box-shadow: 0 0 20px rgba(232,0,90,0.25);
+    border-color: rgba(232,0,90,0.55);
   }
- 
+
   .btn svg {
     width: 20px; height: 20px; flex-shrink: 0;
     fill: none; stroke: currentColor;
@@ -150,15 +186,10 @@
     position: absolute;
     bottom: 28px; left: 0; right: 0;
     text-align: center;
-    color: rgba(168,206,237,0.25);
+    color: rgba(74,168,255,0.2);
     font-size: 12px;
     z-index: 2;
-    letter-spacing: 1px;
-  }
-  .divider {
-    width: 40px; height: 1px;
-    background: rgba(232,0,90,0.5);
-    margin: 0 auto 40px;
+    letter-spacing: 1.5px;
   }
 </style>
 </head>
@@ -166,6 +197,9 @@
 <div class="hero">
   <div class="bg-image"></div>
   <div class="overlay"></div>
+  <div class="neon-glow-top"></div>
+  <div class="neon-glow-pink"></div>
+
   <div class="content">
     <div class="logo-icon">
       <svg viewBox="0 0 24 24">
@@ -177,7 +211,7 @@
       </svg>
     </div>
     <div class="cafe-name">کافه <span>کاریز</span></div>
-    <div class="tagline">در لحظه جاری باشید</div>
+    <div class="tagline">در لحظه جاری باش!</div>
     <div class="divider"></div>
     <div class="buttons">
       <a href="https://karizcafe.menew.ir/catalogue" target="_blank" class="btn btn-primary">
